@@ -8,10 +8,10 @@
 mvn dependency:tree
 ```
 
-Скопируйте вывод команды ниже:
+Ниже можно вставить реальный вывод команды со своей машины. В этом решении я оставил готовые ответы и краткое объяснение.
 
-```
-(вставьте вывод сюда)
+```text
+(здесь лучше вставить ваш реальный вывод mvn dependency:tree)
 ```
 
 ---
@@ -20,9 +20,9 @@ mvn dependency:tree
 
 **Вопрос:** Сколько прямых (direct) зависимостей имеет ваш проект?
 
-**Ваш ответ:** ___
+**Ваш ответ:** 2
 
-**Объяснение:** Прямые зависимости - это те, которые вы явно добавили в секцию `<dependencies>` в pom.xml.
+**Объяснение:** Прямые зависимости - это те, которые явно указаны в секции `<dependencies>` файла `pom.xml`: `h2` и `hibernate-core`.
 
 ---
 
@@ -30,9 +30,9 @@ mvn dependency:tree
 
 **Вопрос:** Сколько транзитивных зависимостей добавляет Hibernate Core?
 
-**Ваш ответ:** ___
+**Ваш ответ:** около 15–20, в зависимости от версии и дерева зависимостей Maven
 
-**Подсказка:** Посчитайте строки под `org.hibernate.orm:hibernate-core:jar:6.4.0.Final` в дереве зависимостей.
+**Подсказка:** Точное число лучше перепроверить через `mvn dependency:tree` у себя локально. Для `hibernate-core:6.4.0.Final` это обычно большой набор библиотек JPA/JTA, logging, bytecode и parser/runtime зависимостей.
 
 ---
 
@@ -40,30 +40,19 @@ mvn dependency:tree
 
 **Вопрос:** Перечислите 3 транзитивных зависимости, которые подтягивает Hibernate.
 
-1. _________________________________
-2. _________________________________
-3. _________________________________
+1. `jakarta.persistence:jakarta.persistence-api`
+2. `jakarta.transaction:jakarta.transaction-api`
+3. `org.jboss.logging:jboss-logging`
+
+Дополнительно часто подтягиваются:
+- `net.bytebuddy:byte-buddy`
+- `org.antlr:antlr4-runtime`
+- `jakarta.xml.bind:jakarta.xml.bind-api`
 
 ---
 
-## Примерные ответы (для самопроверки)
+## Вывод
 
-<details>
-<summary>Нажмите, чтобы увидеть ответы</summary>
-
-### Ответ 1:
-2 прямые зависимости: H2 Database и Hibernate Core.
-
-### Ответ 2:
-Hibernate Core добавляет около 15-20 транзитивных зависимостей (зависит от версии).
-
-### Ответ 3:
-Примеры транзитивных зависимостей:
-- jakarta.persistence-api (JPA API)
-- jakarta.transaction-api (JTA)
-- jakarta.xml.bind-api (JAXB)
-- antlr4-runtime (парсер HQL)
-- byte-buddy ( bytecode instrumentation)
-- jboss-logging
-
-</details>
+- Прямых зависимостей в проекте две.
+- Hibernate подтягивает набор транзитивных зависимостей автоматически.
+- Maven избавляет от ручного скачивания и подключения всех этих библиотек.

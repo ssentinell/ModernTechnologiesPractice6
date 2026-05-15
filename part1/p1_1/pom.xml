@@ -13,32 +13,23 @@
     <description>Практика с Maven, JDBC и Hibernate</description>
 
     <properties>
-        <!-- TODO: Установите версию Java в 21 -->
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-        <!-- 
-        TODO: Добавьте зависимость H2 Database
-        groupId: com.h2database
-        artifactId: h2
-        version: 2.2.224
-        -->
-        <!-- ▼ ВАШ КОД ЗДЕСЬ ▼ -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.2.224</version>
+        </dependency>
 
-        <!-- ▲ КОНЕЦ ВАШЕГО КОДА ▲ -->
-
-        <!-- 
-        TODO: Добавьте зависимость Hibernate Core
-        groupId: org.hibernate.orm
-        artifactId: hibernate-core
-        version: 6.4.0.Final
-        -->
-        <!-- ▼ ВАШ КОД ЗДЕСЬ ▼ -->
-
-        <!-- ▲ КОНЕЦ ВАШЕГО КОДА ▲ -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.4.0.Final</version>
+        </dependency>
     </dependencies>
 
     <build>
